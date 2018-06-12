@@ -18,25 +18,13 @@ import grails.util.BuildSettings
 import grails.util.BuildSettingsHolder
 import grails.util.PluginBuildSettings
 import grails.web.container.EmbeddableServer
-
 import org.codehaus.groovy.grails.cli.support.GrailsBuildEventListener
+import org.eclipse.jetty.annotations.AnnotationConfiguration
 import org.eclipse.jetty.plus.webapp.EnvConfiguration
 import org.eclipse.jetty.plus.webapp.PlusConfiguration
-import org.eclipse.jetty.server.Connector
-import org.eclipse.jetty.server.HttpConfiguration
-import org.eclipse.jetty.server.HttpConnectionFactory
-import org.eclipse.jetty.server.SecureRequestCustomizer
-import org.eclipse.jetty.server.Server
-import org.eclipse.jetty.server.ServerConnector
-import org.eclipse.jetty.server.SslConnectionFactory
+import org.eclipse.jetty.server.*
 import org.eclipse.jetty.util.ssl.SslContextFactory
-import org.eclipse.jetty.webapp.FragmentConfiguration
-import org.eclipse.jetty.webapp.JettyWebXmlConfiguration
-import org.eclipse.jetty.webapp.MetaInfConfiguration
-import org.eclipse.jetty.webapp.TagLibConfiguration
-import org.eclipse.jetty.webapp.WebAppContext
-import org.eclipse.jetty.webapp.WebInfConfiguration
-import org.eclipse.jetty.webapp.WebXmlConfiguration
+import org.eclipse.jetty.webapp.*
 import org.springframework.core.io.FileSystemResource
 import org.springframework.util.Assert
 import org.springframework.util.FileCopyUtils
@@ -157,6 +145,7 @@ class JettyServer implements EmbeddableServer {
         setSystemProperty 'java.naming.factory.initial', 'org.eclipse.jetty.jndi.InitialContextFactory'
 
         def configurations = [
+                AnnotationConfiguration,
                 WebInfConfiguration,
                 WebXmlConfiguration,
                 MetaInfConfiguration,
@@ -164,7 +153,7 @@ class JettyServer implements EmbeddableServer {
                 EnvConfiguration,
                 PlusConfiguration,
                 JettyWebXmlConfiguration,
-                TagLibConfiguration]*.newInstance()
+        ]*.newInstance()
 
         def grailsJndi = grailsConfig?.grails?.development?.jetty?.env
         if (grailsJndi) {
