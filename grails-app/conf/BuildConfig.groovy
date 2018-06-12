@@ -20,19 +20,18 @@ grails.project.dependency.resolution = {
         mavenLocal()
         mavenCentral()
     }
-
     dependencies {
 
         String jettyVersion = '9.3.23.v20180228'
 
-        runtime("org.eclipse.jetty.aggregate:jetty-all:pom:$jettyVersion")
+        runtime([group: 'org.eclipse.jetty.aggregate', name: 'jetty-all', version: jettyVersion, extension: "pom"])
 
         // needed for JSP compilation
         runtime 'org.eclipse.jdt.core.compiler:ecj:4.3.1'
     }
 
     plugins {
-        build(':release:3.0.1', ':rest-client-builder:2.0.1') {
+        build(':release:3.1.2', ':rest-client-builder:2.1.1') {
             export = false
         }
     }

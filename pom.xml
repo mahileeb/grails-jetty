@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xmlns='http://maven.apache.org/POM/4.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+         xsi:schemaLocation='http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd'>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.grails.plugins</groupId>
+    <artifactId>jetty</artifactId>
+    <packaging>zip</packaging>
+    <version>2.5.0</version>
+    <name>Jetty Plugin</name>
+    <description>Makes Jetty the development time container for Grails</description>
+    <url>http://grails.org/plugin/jetty</url>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <organization>
+        <name>SpringSource</name>
+        <url>http://www.springsource.org/</url>
+    </organization>
+    <developers>
+        <developer>
+            <name>Graeme Rocher</name>
+            <email>graeme.rocher@springsource.com</email>
+        </developer>
+        <developer>
+            <name>Burt Beckwith</name>
+            <email>beckwithb@vmware.com</email>
+        </developer>
+        <developer>
+            <name>Adarsh Ramamurthy</name>
+            <email>adarsh.ramamurthy@gmail.com</email>
+        </developer>
+    </developers>
+    <issueManagement>
+        <system>JIRA</system>
+        <url>http://jira.grails.org/browse/GPJETTY</url>
+    </issueManagement>
+    <scm>
+        <url>https://github.com/grails-plugins/grails-jetty</url>
+    </scm>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.jetty.aggregate</groupId>
+            <artifactId>jetty-all</artifactId>
+            <version>9.3.23.v20180228</version>
+            <type>pom</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jdt.core.compiler</groupId>
+            <artifactId>ecj</artifactId>
+            <version>4.3.1</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+</project>
