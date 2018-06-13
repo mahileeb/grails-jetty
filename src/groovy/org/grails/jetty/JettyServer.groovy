@@ -145,7 +145,6 @@ class JettyServer implements EmbeddableServer {
         setSystemProperty 'java.naming.factory.initial', 'org.eclipse.jetty.jndi.InitialContextFactory'
 
         def configurations = [
-                AnnotationConfiguration,
                 WebInfConfiguration,
                 WebXmlConfiguration,
                 MetaInfConfiguration,
@@ -153,8 +152,8 @@ class JettyServer implements EmbeddableServer {
                 EnvConfiguration,
                 PlusConfiguration,
                 JettyWebXmlConfiguration,
+                AnnotationConfiguration
         ]*.newInstance()
-
         def grailsJndi = grailsConfig?.grails?.development?.jetty?.env
         if (grailsJndi) {
             def res = new FileSystemResource(grailsJndi.toString())
